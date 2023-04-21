@@ -1,0 +1,40 @@
+.Header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerMenu{
+    display: flex;
+    margin-right: 100px;
+
+}
+
+.textMenu{
+    margin-right: 100px;
+    font-family: 'Open Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 27px;
+display: flex;
+align-items: center;
+
+color: #353030;
+}
+
+.textUser{
+    font-family: 'Raleway';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 23px;
+color: #163BA4;
+}
+
+.logo img{
+    width: 242px;
+height: 70px;
+left: 91px;
+top: 62px;
+}
