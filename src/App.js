@@ -6,6 +6,7 @@ function App() {
     <div className="app">
       <div className="app-container">
         <Header />
+        Ну и все
         <div className="content">
           <div className="content-container">
             
