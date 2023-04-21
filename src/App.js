@@ -1,4 +1,5 @@
 import './App.css';
+import Abonents from './component/Abonents/Abonents';
 import Header from './components/header/Headers';
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
     <div className="app">
       <div className="app-container">
         <Header />
-        Ну и все
+        <Abonents/>
         <div className="content">
           <div className="content-container">
             
