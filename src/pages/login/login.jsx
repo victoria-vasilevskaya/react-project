@@ -37,7 +37,7 @@ function Login() {
                 <img src={logo}></img>
             </div>
             <div className={st.container}>
-                <div className="caption">Вход в приложение</div>
+                <div className={st.caption}>Вход в приложение</div>
                 <div className={st.containerForm}>
                     <form method="#" id="form" onSubmit={getFormValue}>
                         <div className={st.inputLogin}>
