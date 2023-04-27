@@ -1,0 +1,17 @@
+.page{
+    background-image: url("./background.png");
+    height: 900px;
+}
+
+.log img{
+    width: 242px;
+    height: 70px;
+    margin-top: 46px;
+    margin-left: 64px;
+}
+
+.container{
+    margin-left: auto;
+    margin-right: auto;
+    
+}

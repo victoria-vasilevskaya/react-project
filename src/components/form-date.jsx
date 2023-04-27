@@ -1,3 +1,5 @@
+import React from "react";
+
 function FormDate (){
     return(
         <div className="form-date">
