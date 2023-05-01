@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
-import { getFormValue } from './pages/login/login'
-import Login  from './pages/login/login'
-import Journal from './pages/journal/journal'
+import { getFormValue } from './login/login'
+import Login  from './login/login'
+import Journal from './journal/journal'
 
 export function Main(){
     return (
