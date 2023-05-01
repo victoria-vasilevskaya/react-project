@@ -1,0 +1,96 @@
+.page{
+    background-image: url("./background.png");
+    height: 900px;
+    font-family: 'Open Sans';
+}
+
+.log img{
+    width: 242px;
+    height: 70px;
+    margin-top: 46px;
+    margin-left: 64px;
+}
+
+.container{
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap:54px;
+}
+
+.caption {
+    color: #323C47;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 48px;
+    text-align: center;
+}
+
+.containerForm{
+    width: 416px;
+    height: 306px;
+    background: #FFFFFF;
+    box-shadow: 0px 6px 16px rgba(33, 33, 33, 0.04);
+    border-radius: 4px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form{
+    margin-top: 34px;
+    display: flex;
+    flex-direction: column;
+    gap:24px;
+}
+
+.inputLogin, .inputPassword{
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+}
+
+.inputLogin input, .inputPassword input{
+    width: 322px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.inputLogin span,
+.inputPassword span {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    color: #707683;
+    text-align: left;
+    margin-left: 44px;
+}
+
+.btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    width: 352px;
+    height: 44px;
+    background: #163BA4;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    color: #FFFFFF;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.inputCheckBox{
+    text-align: left;
+    margin-left: 44px;
+}
+
+.inputCheckBox span{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+}

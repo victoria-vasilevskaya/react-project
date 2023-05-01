@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import './App.module.css';
-import Abonents from './components/Abonents/Abonents';
-import Header from './components/Header/Header';
-import { BrowserRouter, Route,Routes } from 'react-router-dom';
 
+import React, { Component } from 'react';
+import Abonents from './components/Abonents/Abonents';
+import { BrowserRouter, Route,Routes } from 'react-router-dom';
+import st from './App.module.css';
+import Header from './components/Header/Header';
+import { Main } from './pages/main';
 
 
 
@@ -39,26 +40,17 @@ componentWillMount() {
 render(){
   return (
     <BrowserRouter>
-    <div className="app">
-      <div className="app-container">
+    <div className={st.app}>
         <Header />
         
         <Routes>
             <Route path='/' element={<Abonents rows = {this.state.apiResponse} />} />
           </Routes>
-
-        <div className="content">
-          <div className="content-container">
-            
-          </div>
-        </div>
       </div>
-    
-    </div>
+ 
     </BrowserRouter>
   );
 }
 }
 
 export default App;
-
