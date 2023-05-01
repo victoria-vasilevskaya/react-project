@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Abonents from './component/Abonents/Abonents';
-import Header from './component/Header/Headers';
+import Abonents from './components/Abonents/Abonents';
+import Header from './components/Header/Header';
 import { BrowserRouter, Route,Routes } from 'react-router-dom';
 
 
