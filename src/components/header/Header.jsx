@@ -1,4 +1,3 @@
-import React from "react";
 import logo from "./logo.svg"
 import st from "./Header.module.css";
 import NavMenu from "../NavMenu/navmenu";
