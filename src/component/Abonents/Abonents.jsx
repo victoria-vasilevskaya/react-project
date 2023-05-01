@@ -2,6 +2,20 @@ import React from "react";
 import s from "./Abonents.module.css";
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
+import mysql from "mysql2";
+
+const connection = mysql.createConnection({
+        host: "127.0.0.1",
+        user: "root",
+        database:"db",
+        password:"12345678"
+});
+
+const sql ='SELECT * FROM abonent';
+
+connection.query(sql, function(err,results){
+        if(err) console.log(err);
+});
 
 
 const columns = [
@@ -41,7 +55,7 @@ const rows = [
     { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
     { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
     { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
+    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: 19 },
     { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
     { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
     { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
