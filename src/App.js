@@ -1,13 +1,52 @@
+import React, { Component } from 'react';
 import './App.css';
 import Abonents from './component/Abonents/Abonents';
-import Header from './components/header/Headers';
+import Header from './component/Header/Headers';
+import { BrowserRouter, Route,Routes } from 'react-router-dom';
 
-function App() {
+
+
+
+
+class App extends Component {
+   
+  constructor(props){
+    super(props);
+    this.state = { apiResponse: []};
+}
+callAPI() {
+    fetch("http://localhost:9000/testAPI")
+    .then(response => {
+      if (!response.ok) {
+          throw new Error("HTTP error " + response.status);
+      }
+      return response.json();
+  })
+  .then(json => {
+      this.users = json;
+      console.log(this.users);
+      this.setState(this.state.apiResponse=this.users);
+
+  })
+  .catch(function () {
+      this.dataError = true;
+  })
+}
+componentWillMount() {
+    this.callAPI();
+}
+ 
+render(){
   return (
+    <BrowserRouter>
     <div className="app">
       <div className="app-container">
         <Header />
-        <Abonents/>
+        
+        <Routes>
+            <Route path='/' element={<Abonents rows = {this.state.apiResponse} />} />
+          </Routes>
+
         <div className="content">
           <div className="content-container">
             
@@ -16,7 +55,10 @@ function App() {
       </div>
     
     </div>
+    </BrowserRouter>
   );
+}
 }
 
 export default App;
+
