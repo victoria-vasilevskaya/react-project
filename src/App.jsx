@@ -6,9 +6,6 @@ import st from './App.module.css';
 import Header from './components/Header/Header';
 import { Main } from './pages/main';
 
-
-
-
 class App extends Component {
    
   constructor(props){
@@ -39,16 +36,15 @@ componentWillMount() {
  
 render(){
   return (
-    <BrowserRouter>
     <div className={st.app}>
         <Header />
         
         <Routes>
             <Route path='/' element={<Abonents rows = {this.state.apiResponse} />} />
-          </Routes>
+        </Routes>
+
+        <Main />
       </div>
- 
-    </BrowserRouter>
   );
 }
 }
