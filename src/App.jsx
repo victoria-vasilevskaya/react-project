@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Abonents from './components/Abonents/Abonents';
 import { BrowserRouter, Route,Routes } from 'react-router-dom';
 import st from './App.module.css';
-import Header from './components/Header/Header';
+import Header from './components/header/Header';
 import { Main } from './pages/main';
 
 
@@ -16,7 +16,7 @@ class App extends Component {
     this.state = { apiResponse: []};
 }
 callAPI() {
-    fetch("http://localhost:9000/testAPI")
+    fetch("http://localhost:9000/abonent-status")
     .then(response => {
       if (!response.ok) {
           throw new Error("HTTP error " + response.status);
@@ -39,16 +39,16 @@ componentWillMount() {
  
 render(){
   return (
-    <BrowserRouter>
+    
     <div className={st.app}>
         <Header />
         
         <Routes>
-            <Route path='/' element={<Abonents rows = {this.state.apiResponse} />} />
+            <Route path='/abonent-status' element={<Abonents rows = {this.state.apiResponse} />} />
           </Routes>
       </div>
  
-    </BrowserRouter>
+   
   );
 }
 }
