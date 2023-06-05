@@ -1,0 +1,32 @@
+.adminPanel{
+    margin: 0 auto;
+     display: grid;
+     width: 1080;
+     grid-template-areas: 
+     "h h"
+     "n c"
+     ;
+     grid-template-rows: 60px 1fr;
+     grid-template-columns: 2fr 10fr;
+     grid-gap: 10px;
+  }
+  
+  .panelTable{
+    grid-area: c;
+    
+    }
+  
+
+.navBar{
+    grid-area: n;
+    display: flex;
+    background-color: #163BA4;
+    padding: 20px;
+    display:flex;
+    flex-direction: column;
+    }
+
+.link{
+    color: white;
+    text-decoration: none;
+}

@@ -2,11 +2,8 @@ import React from "react";
 import s from "./Abonents.module.css";
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
-import { Link, useNavigate } from "react-router-dom";
-import { useMovieData } from '@mui/x-data-grid-generator';
-import Alert from '@mui/material/Alert';
-
-
+import { useNavigate } from "react-router-dom";
+import Axios from "axios";
 
 const columns = [
   {
@@ -85,46 +82,17 @@ const columns = [
   }
 ];
 
-
-
-
 const Abonents = (props) => {
   let navigate = useNavigate();
 
-  const [message, setMessage] = React.useState('');
-  const data = useMovieData();
-
+  const idAbonentChange=(idabonent)=>{
+    props.idabonent(idabonent);
+  }
   const handleRowClick = (params) => {
-    navigate(`/abonent-devcie/${params.row.id_abonent}`);
+    navigate(`/abonent-device/device-stats/${params.row.id_abonent}`);
+    idAbonentChange(params.row.id_abonent);
   };
-  
- /* const onRowDoubleClick = useCallback((rowProps) => {
-    navigate("/abonent-devcie/" + select.map((val) => val.id_abonent));
-    console.log(select.map((val) => val.id_abonent));
-  }, [])
 
-  const onRowClick = useCallback((rowProps) => {
-    navigate("/abonent-devcie/" + select.map((val) => val.id_abonent));
-    console.log(select.map((val) => val.id_abonent));
-  }, [])
-
-  const onRenderRow = useCallback((rowProps) => {
-    // save the original handlers to be called later
-    const { onClick, onDoubleClick } = rowProps;
-
-    rowProps.onDoubleClick = (event) => {
-      onRowDoubleClick(rowProps);
-      if (onDoubleClick) {
-        onRowDoubleClick(event);
-      }
-    };
-    rowProps.onClick = (event) => {
-      onRowClick(rowProps);
-      if (onClick) {
-        onRowClick(event);
-      }
-    };
-  }, [])*/
   return (
     <div className={s.Abonents}>
       <div className={s.tableAbonent}>
@@ -143,15 +111,13 @@ const Abonents = (props) => {
             disableRowSelectionOnClick
             getRowId ={(row) => row.id_abonent}
             onRowClick={handleRowClick}
-            /*onSelectionChange={(newSelection) => {
-              setSelection(newSelection.rows)
-          }}*/
+            onRowDoubleClick={handleRowClick}
           />
         </Box>
-        {message && <Alert severity="info">{message}</Alert>}
       </div>
     </div>
   );
 }
+ 
 
 export default Abonents;

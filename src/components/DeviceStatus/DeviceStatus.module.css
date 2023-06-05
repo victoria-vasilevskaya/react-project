@@ -1,0 +1,42 @@
+.content{
+    margin: 50px;
+    box-shadow: 0 0 0 0.1px rgba(0.5,0.5,0.5,0.5);
+}
+
+.titl {
+    margin-right: 100px;
+    font-size: 20px;
+    font-family: 'Raleway';
+    display: flex;
+
+}
+
+.titl .text {
+    color: #163BA4;
+
+}
+
+.table{
+    margin-top: 60px;
+    display:flex;
+    justify-content: center;
+}
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 5px;
+    text-align: left;
+}
+
+.graph{
+    margin-top: 50px;
+}
+.time{
+    margin-top: 50px;
+}
