@@ -57,3 +57,9 @@
     color: #FD2929;
     margin-right: 12px;
 }
+
+.logo img{
+    width: 242px;
+    height: 70px;
+    margin-top: 30px;
+}

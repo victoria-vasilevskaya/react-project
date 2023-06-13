@@ -2,7 +2,8 @@ import React,{useState,useEffect}from "react";
 import s from "../Module/Update.module.css";
 import Axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-
+import Dropdown from "../../DropDown/DropDown";
+import swal from 'sweetalert2';
 
 function UpdateUser(){
     const [name,setName] = useState("");
@@ -13,6 +14,11 @@ function UpdateUser(){
     const {id}= useParams();
     const[user,setUser] = useState("");
     const navigate =useNavigate();
+    const options=[  
+        {value:"Администратор", label: 'Администратор'},
+        {value: "Мастер", label: 'Мастер'},
+        {value: "Менеджер", label: 'Менеджер'}
+            ];
 
     useEffect(()=>{
         Axios.get("http://localhost:9000/admin-panel/user/update/"+id)
@@ -37,6 +43,7 @@ function UpdateUser(){
             console.log(response)
             navigate("/admin-panel/user")
         }).catch(err=>console.log(err));
+        swal.fire('Данные пользователя обновлены.', '', 'success')
     };
     return(
         <div className={s.abonentAbonent}>
@@ -67,11 +74,17 @@ function UpdateUser(){
                             onChange={e=>setPhone(e.target.value)}
                             ></input>
                     </div>
-                    <div className={s.mb2}>
-                            <label htmlFor="">Должность</label>
-                            <input type="text" placeholder={user[0]?.post} className={s.formControl}
-                            onChange={e=>setPost(e.target.value)}
-                            ></input>
+                    <div>
+                    <label htmlFor="">Должность</label>
+                    <Dropdown
+                    isSearchable
+                    placeHolder={user[0]?.post}
+                    options={options}
+                    onChange={(e) => {
+                        setPost(e.value)
+                        if(e===""){setPost(user[0]?.post)}
+                    }}
+                    />
                     </div>
                     <input type="submit"  onClick={handleSubmit} value="Обновить"/>
                 </div>

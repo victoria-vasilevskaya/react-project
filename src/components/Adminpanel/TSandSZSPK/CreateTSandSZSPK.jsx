@@ -2,6 +2,7 @@ import React,{useState}from "react";
 import s from "../Module/Create.module.css";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
+import swal from 'sweetalert2';
 
 
 function CreateTSandSZSPK(){
@@ -27,6 +28,7 @@ function CreateTSandSZSPK(){
             console.log(response)
             navigate("/admin-panel/ts-szspk")
         }).catch(err=>console.log(err));
+        swal.fire('ТС и ЖСПК добавлено.', '', 'success')
     };
     return(
         <div className={s.createAddress}>

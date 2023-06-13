@@ -1,10 +1,20 @@
+import React, { useContext } from 'react';
 import logo from "./logo.svg"
 import st from "./Header.module.css";
 import NavMenu from "../NavMenu/navmenu";
 import icon from "./btn.svg";
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+
+
+
 
 function Header() {
+    const navigate =useNavigate();
+    const handleLogout = (e) => { //функция выхода из аккаунта
+        localStorage.clear()
+        navigate("/");
+    }
     return (
         <div className={st.Header}>
             <div className={st.logo}>
@@ -14,11 +24,11 @@ function Header() {
                 Статистика
             </div>
             
-            <div className={st.textUser}>Менеджер Иванов О.</div>
-            <Link to="/">  <button href="#" className={st.btn_logout}>
+            <div className={st.textUser}>{localStorage.getItem("role")+" "+localStorage.getItem("username")}</div>
+             <button href="#" className={st.btn_logout} onClick={handleLogout}>
                 <span>Выйти</span>
                 <img src={icon}></img>
-            </button></Link>
+            </button>
             <div>
                 <NavMenu />
             </div>

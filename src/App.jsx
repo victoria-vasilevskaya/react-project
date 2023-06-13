@@ -1,14 +1,12 @@
-
 import React, {useState,useEffect} from 'react';
 import Abonents from './components/Abonents/Abonents';
 import DeviceStatus from './components/DeviceStatus/DeviceStatus';
-import Auth from './components/Auth/Auth';
 import {  Route,Routes,useParams } from 'react-router-dom';
 import st from './App.module.css';
 import Header from './components/header/Header';
 import AdminPanel from './components/Adminpanel/AdminPanel';
 import Axios from "axios";
-import InputAbonent from './components/Adminpanel/Abonent/InputAbonent';
+import LoginPage from './components/login/loginPage';
 
 
 
@@ -61,7 +59,7 @@ function App (){
   return (
     <div className={st.app}>
         <Routes>
-            <Route path='/' element={<Auth/>}/>
+            <Route path='/' element={<LoginPage/>}/>
             <Route path='/abonent-device' element={[<Header/>,<Abonents rows = {data} idabonent={idAbonentChange} data={dataSet} />]} />
             <Route path={'/abonent-device/device-stats/'+idabonent} element={[<Header/>,<DeviceStatus data={date} idabonent={idabonent}/> ]} />
             <Route path='/admin-panel/*' element={<AdminPanel/>}/>

@@ -2,7 +2,7 @@ import React,{useState}from "react";
 import s from "../Module/Create.module.css";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import swal from 'sweetalert2';
 
 function CreateAddress(){
     const [street,setStreet] = useState("");
@@ -19,6 +19,7 @@ function CreateAddress(){
             console.log(response)
             navigate("/admin-panel/address")
         }).catch(err=>console.log(err));
+        swal.fire('Адрес добавлен.', '', 'success')
     };
     return(
         <div className={s.createAddress}>

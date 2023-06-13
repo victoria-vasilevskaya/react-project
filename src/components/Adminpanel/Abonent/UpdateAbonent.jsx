@@ -3,6 +3,7 @@ import s from "../Module/Update.module.css";
 import Axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Dropdown from "../../DropDown/DropDown";
+import swal from 'sweetalert2';
 
 
 function UpdateAbonent(){
@@ -49,6 +50,7 @@ function UpdateAbonent(){
             console.log(response)
             navigate("/admin-panel/abonent")
         }).catch(err=>console.log(err));
+        swal.fire('Данные абонента обновлены.', '', 'success')
     };
     return(
         <div className={s.abonentAbonent}>

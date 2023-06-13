@@ -3,6 +3,7 @@ import s from "../Module/Create.module.css";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Dropdown from "../../DropDown/DropDown";
+import swal from 'sweetalert2';
 
 
 function CreateAbonent(){
@@ -23,6 +24,7 @@ function CreateAbonent(){
     const options = address.map(function(address){
         return{
         value:address.id_address,label:address.street+" д."+address.house+" кв."+address.flat}})
+        console.log(options);
     function handleSubmit(){
         Axios.post("http://localhost:9000/admin-panel/abonent/create", {
             surname: surname,
@@ -33,6 +35,7 @@ function CreateAbonent(){
             console.log(response)
             navigate("/admin-panel/abonent")
         }).catch(err=>console.log(err));
+        swal.fire('Абонент добавлен.', '', 'success')
     };
     return(
         <div className={s.createAbonent}>

@@ -2,7 +2,7 @@ import React,{useEffect, useState}from "react";
 import s from "../Module/Input.module.css";
 import Axios from "axios";
 import { Link, useParams } from "react-router-dom";
-
+import swal from 'sweetalert2';
 
 function InputDevice(){
     let {id} = useParams()
@@ -40,8 +40,23 @@ function InputDevice(){
     const handleDelete = async (ida)=>{
         id=ida;
         try{
-            await Axios.delete("http://localhost:9000/admin-panel/device/"+id)
-            window.location.reload()
+            swal.fire({
+                title: 'Вы точно хотите удалить?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Удалить',
+                denyButtonText: `Не удалять`,
+                cancelButtonText:'Отмена',
+              }).then((result) => {
+                if (result.value) {
+                    Axios.delete("http://localhost:9000/admin-panel/device/"+id)
+                    window.location.reload()
+                  swal.fire('Удалено', '', 'success')
+                } else if (!result.value) {
+                  swal.fire('Удаление отменено', '', 'info')
+                }
+              });
+            
         }catch(err){
             console.log(err);
         }
@@ -88,7 +103,6 @@ function InputDevice(){
                                     <Link to={`/admin-panel/device/update/${data.id_stat}`} className={s.buttontd}>Обновить</Link>
                                     <a onClick={e =>{
                                         handleDelete(data.id_stat);
-                                        alert("Устройство удалено");
                                         }} className={s.buttontd}>Удалить</a>
                                 </td>
                             </tr>

@@ -1,6 +1,6 @@
 .content{
     margin: 50px;
-    box-shadow: 0 0 0 0.1px rgba(0.5,0.5,0.5,0.5);
+
 }
 
 .titl {
@@ -39,4 +39,32 @@ td {
 }
 .time{
     margin-top: 50px;
+}
+
+.timeItems{
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.timeItems button{
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: .5em 2em;
+    outline: none;
+    border-width: 2px 0;
+    border-style: solid none;
+    border-color: #337dfd #000 #0664d7;
+    border-radius: 6px;
+    background: linear-gradient(#5fa0ef, #0664d7) #5fa0ef;
+    transition: 0.2s;
+}
+
+.timeItems button:hover{
+    background: linear-gradient(#0e54aa, #0664d7) #2587ff;
+}
+
+.timeItems button:active {
+    background: linear-gradient(#0e54aa, #0664d7) #2587ff; 
 }

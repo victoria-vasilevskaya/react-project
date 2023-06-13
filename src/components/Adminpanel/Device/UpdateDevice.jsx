@@ -3,7 +3,7 @@ import s from "../Module/Update.module.css";
 import Axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Dropdown from "../../DropDown/DropDown";
-
+import swal from 'sweetalert2';
 
 function UpdateDevice(){
     const [idlan,setIdlan] = useState("");
@@ -71,6 +71,7 @@ function UpdateDevice(){
             console.log(response)
             navigate("/admin-panel/device")
         }).catch(err=>console.log(err));
+        swal.fire('Данные абонентского устройство обновлены.', '', 'success')
     };
     return(
         <div className={s.abonentAddress}>

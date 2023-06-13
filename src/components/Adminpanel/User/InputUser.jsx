@@ -2,6 +2,7 @@ import React,{useEffect, useState}from "react";
 import s from "../Module/Input.module.css";
 import Axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import swal from 'sweetalert2';
 
 
 
@@ -37,11 +38,28 @@ function InputUser(){
     }
     const paginate = pageNumber=>setCurrentPage(pageNumber);
 
-    const handleDelete = async (ida)=>{
-        id=ida;
+    const handleDelete = async (data)=>{
+
+        id=data.id_user;
+        
         try{
-            await Axios.delete("http://localhost:9000/admin-panel/user/"+id)
-            window.location.reload()
+            swal.fire({
+                title: 'Вы точно хотите удалить?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Удалить',
+                denyButtonText: `Не удалять`,
+                cancelButtonText:'Отмена',
+              }).then((result) => {
+                if (result.value) {
+                    Axios.delete("http://localhost:9000/admin-panel/user/"+id)
+                    window.location.reload()
+                  swal.fire('Удалено', '', 'success')
+                } else if (!result.value) {
+                  swal.fire('Удаление отменено', '', 'info')
+                }
+              });
+            
         }catch(err){
             console.log(err);
         }
@@ -76,8 +94,7 @@ function InputUser(){
                                 <td>
                                     <Link to={`/admin-panel/user/update/${data.id_user}`} className={s.buttontd}>Обновить</Link>
                                     <a onClick={e =>{
-                                        handleDelete(data.id_user);
-                                        alert("Пользователь удален");
+                                        handleDelete(data);
                                         }} className={s.buttontd}>Удалить</a>
                                 </td>
                             </tr>

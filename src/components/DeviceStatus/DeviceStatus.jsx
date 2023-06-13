@@ -6,6 +6,9 @@ import Axios from "axios";
 import { useParams } from "react-router-dom";
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
+import swal from 'sweetalert2';
+
+
 
 const columns = [
   {
@@ -79,34 +82,60 @@ const columns = [
   }
 ];
 function DeviceStatus(props){
+  let newDate = new Date()
+  let date = newDate.getDate();
+  let month = newDate.getMonth() + 1;
+  let year = newDate.getFullYear();
   const [stat,setStat]= useState([]);
-  const [data,setData]= useState([]);
+  const [statDay,setStatDay]= useState([]);
+  const [data1,setData1]= useState(year+"-"+month+"-"+date);
+  const [data2,setData2]= useState(year+"-"+month+"-"+(date+1));
   const [device,setDevice] = useState([]);
   let {id} = useParams();
+  let {dataone} = useParams();
+  let {datatwo} = useParams();
   id =props.idabonent;
   const uplevel=[];
   const upsnr=[];
-  const time=[];
+  const time = [];
 
-  
-  useEffect(()=>{
-    Axios.get("http://localhost:9000/abonent-device/abonent-stats/"+id)
-    .then((response) => {
-      setStat(response.data);
-      })  
-     .catch(err=>console.log(err));
-},[]);
+  useEffect(() => {
+    Axios.get("http://localhost:9000/abonent-device/abonent-stats/" + id)
+      .then((response) => {
+        setStat(response.data);
+      })
+      .catch(err => console.log(err));
+  }, []);
+  useEffect(() => {
+    dataone = data1;
+    datatwo = data2;
+    Axios.get("http://localhost:9000/abonent-device/abonent-stats/" + id + "/" + dataone + "/" + datatwo)
+      .then((response) => {
+        if (response)
+          setStatDay(response.data)
+      });
+  }, []);
 
-useEffect(()=>{
-  Axios.get("http://localhost:9000/abonent-device/"+id)
-  .then((response) => {
-    if(response)
-    setDevice(response.data)
-});
-},[])
-console.log(time);
+  useEffect(() => {
+    Axios.get("http://localhost:9000/abonent-device/" + id)
+      .then((response) => {
+        if (response)
+          setDevice(response.data)
+      });
+  }, [])
+  console.log(time);
 
- return(
+  function statChart() {
+    dataone = data1;
+    datatwo = data2;
+    Axios.get("http://localhost:9000/abonent-device/abonent-stats/" + id + "/" + dataone + "/" + datatwo)
+      .then((response) => {
+        if (response)
+          setStatDay(response.data)
+      });
+  }
+
+  return (
     
     <div className={s.DeviceStatus}>
     
@@ -115,7 +144,7 @@ console.log(time);
          Статистика по модему (MAC:{device[0]?.cm_mac} ID:{props.idabonent})
        </div>
        <div className={s.table}>
-       <Box sx={{ height: 800, width: '100%' }}>
+       <Box sx={{ height: 540, width: '100%' }}>
           <DataGrid
             rows={stat}
             columns={columns}
@@ -132,7 +161,20 @@ console.log(time);
           />
         </Box>
        </div>
-       <div className={s.time}>
+       <div className={s.timeItems}>
+       <div className={s.time1}>
+       <TextFielld
+          id="date"
+          type="date"
+          InputLabelProps={{
+            shrink:true,
+          }}
+          onChange={e=>{
+            setData1(e.target.value)
+          }}
+          ></TextFielld>
+       </div>
+       <div className={s.time2}>
           <TextFielld
           id="date"
           type="date"
@@ -140,11 +182,15 @@ console.log(time);
             shrink:true,
           }}
           onChange={e=>{
-            setData(e.target.value)
+            setData2(e.target.value)
           }}
           ></TextFielld>
         </div>
-        <div className={s.graph}><Chart1 stat={stat}/></div>
+        <button onClick={statChart}>
+          Показать</button>
+        
+        </div>
+        <div className={s.graph}><Chart1 stat={statDay}/></div>
      
       </div>
 

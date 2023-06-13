@@ -3,10 +3,11 @@
      display: grid;
      width: 1080;
      grid-template-areas: 
+     "l e"
      "h h"
      "n c"
      ;
-     grid-template-rows: 60px 1fr;
+     grid-template-rows: 100px 1fr;
      grid-template-columns: 2fr 10fr;
      grid-gap: 10px;
   }
@@ -29,4 +30,39 @@
 .link{
     color: white;
     text-decoration: none;
+}
+
+.logo img{
+    grid-area: l;
+    margin-left: 64px;
+    width: 242px;
+    height: 70px;
+    margin-top: 30px;
+}
+.exit{
+    grid-area: e;
+    display: flex;
+  justify-content: right;
+  margin-left: 64px;
+  margin-top: 30px;
+}
+
+.btn_logout{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #F41F13;
+    font-size: 14px;
+    height: 44px;
+    width: 135px;
+    border-radius: 10px;
+    padding: 10px 32px 10px 32px;
+    align-items: center;
+}
+
+.btn_logout span{
+    font-family: Raleway;
+    font-size: 14px;
+    font-weight: 700;
+    color: #FD2929;
+    margin-right: 12px;
 }

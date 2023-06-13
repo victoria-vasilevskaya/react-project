@@ -2,7 +2,8 @@ import React,{useState}from "react";
 import s from "../Module/Create.module.css";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import Dropdown from "../../DropDown/DropDown";
+import swal from 'sweetalert2';
 
 function CreateUser(){
     const [name,setName] = useState("");
@@ -11,6 +12,13 @@ function CreateUser(){
     const [phone,setPhone] = useState("");
     const [post,setPost] = useState("");
     const navigate =useNavigate();
+    const options=[  
+{value:"Администратор", label: 'Администратор'},
+{value: "Мастер", label: 'Мастер'},
+{value: "Менеджер", label: 'Менеджер'}
+    ];
+
+    
 
     function handleSubmit(){
         Axios.post("http://localhost:9000/admin-panel/user/create", {
@@ -20,9 +28,9 @@ function CreateUser(){
             phone: phone,
             post:post,
         }).then((response) => {
-            console.log(response)
             navigate("/admin-panel/user")
         }).catch(err=>console.log(err));
+        swal.fire('Пользователь добавлен.', '', 'success')
     };
     return(
         <div className={s.createUser}>
@@ -53,11 +61,14 @@ function CreateUser(){
                             onChange={e=>setPhone(e.target.value)}
                             ></input>
                     </div>
-                    <div className={s.mb2}>
-                            <label htmlFor="">Должность</label>
-                            <input type="text" placeholder="Введите должность" className={s.formControl}
-                            onChange={e=>setPost(e.target.value)}
-                            ></input>
+                    <div>
+                    <label htmlFor="">Должность</label>
+                    <Dropdown
+                    isSearchable
+                    placeHolder="Выберите должность"
+                    options={options}
+                    onChange={(value) => setPost(value.value)}
+                    />
                     </div>
                     <input type="submit"  onClick={handleSubmit} value="Добавить"/>
                 </div>

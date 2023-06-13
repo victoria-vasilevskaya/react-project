@@ -2,7 +2,7 @@ import React,{useState,useEffect}from "react";
 import s from "../Module/Update.module.css";
 import Axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-
+import swal from 'sweetalert2';
 
 function UpdateAddress(){
     const [street,setStreet] = useState("");
@@ -32,6 +32,7 @@ function UpdateAddress(){
             console.log(response)
             navigate("/admin-panel/address")
         }).catch(err=>console.log(err));
+        swal.fire('Данные адреса обновлены.', '', 'success')
     };
     return(
         <div className={s.abonentAddress}>

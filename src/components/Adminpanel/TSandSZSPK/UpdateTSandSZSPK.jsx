@@ -2,6 +2,7 @@ import React,{useState,useEffect}from "react";
 import s from "../Module/Update.module.css";
 import Axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import swal from 'sweetalert2';
 
 
 function UpdateTSandSZSPK(){
@@ -12,7 +13,7 @@ function UpdateTSandSZSPK(){
     const [namets,setNamets] = useState("");
     const [compledate,setCompledate] = useState("");
     const [compens,setCompens] = useState("");
-    const [tsandszspk,setTsandszspk] = useState("")
+    const [tsandszspk,setTsandszspk] = useState([])
     const {id}= useParams();
     const navigate =useNavigate();
 
@@ -33,7 +34,7 @@ function UpdateTSandSZSPK(){
 
     function handleSubmit(){
        Axios.put("http://localhost:9000/admin-panel/ts-szspk/update/"+id, {
-        street: street,
+            street: street,
             house: house,
             fio: fio,
             phone: phone,
@@ -41,9 +42,9 @@ function UpdateTSandSZSPK(){
             compldate: compledate,
             compens: compens,
         }).then((response) => {
-            console.log(response)
             navigate("/admin-panel/ts-szspk")
         }).catch(err=>console.log(err));
+        swal.fire('Данные ТСиЖСПК обновлены.', '', 'success')
     };
     return(
         <div className={s.abonentAddress}>

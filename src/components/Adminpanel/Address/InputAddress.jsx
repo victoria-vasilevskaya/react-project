@@ -2,7 +2,7 @@ import React,{useEffect, useState}from "react";
 import s from "../Module/Input.module.css";
 import Axios from "axios";
 import { Link, useParams } from "react-router-dom";
-
+import swal from 'sweetalert2';
 
 function InputAddress(){
     let {id} = useParams()
@@ -41,8 +41,23 @@ function InputAddress(){
     const handleDelete = async (ida)=>{
         id=ida;
         try{
-            await Axios.delete("http://localhost:9000/admin-panel/address/"+id)
-            window.location.reload()
+            swal.fire({
+                title: 'Вы точно хотите удалить?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Удалить',
+                denyButtonText: `Не удалять`,
+                cancelButtonText:'Отмена',
+              }).then((result) => {
+                if (result.value) {
+                    Axios.delete("http://localhost:9000/admin-panel/address/"+id)
+                    window.location.reload()
+                  swal.fire('Удалено', '', 'success')
+                } else if (!result.value) {
+                  swal.fire('Удаление отменено', '', 'info')
+                }
+              });
+            
         }catch(err){
             console.log(err);
         }
@@ -74,8 +89,7 @@ function InputAddress(){
                                     <Link to={`/admin-panel/address/update/${data.id_address}`} className={s.buttontd}>Обновить</Link>
                                     <a onClick={e =>{
                                         handleDelete(data.id_address);
-                                        alert("Адрес удален.");
-                                        }} className={s.buttontd}>Удалить</a>
+                                      }} className={s.buttontd}>Удалить</a>
                                 </td>
                             </tr>
                         ))
