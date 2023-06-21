@@ -35,7 +35,7 @@ function AdminPanel() {
             <div className={s.navBar}>
                 <Link to="/admin-panel/user" className={s.link}>Пользователи</Link>
                 <Link to="/admin-panel/abonent" className={s.link}>Абоненты</Link>
-                <Link to="/admin-panel/address" className={s.link}>Адресса</Link>
+                <Link to="/admin-panel/address" className={s.link}>Адреса</Link>
                 <Link to="/admin-panel/device" className={s.link}>Абонентские устройства</Link>
                 <Link to="/admin-panel/ts-szspk" className={s.link}>ТСиЖСПК</Link>
             </div>
