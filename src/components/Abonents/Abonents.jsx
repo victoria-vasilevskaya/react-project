@@ -2,6 +2,7 @@ import React from "react";
 import s from "./Abonents.module.css";
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
+import Header from "../header/Header";
 
 
 const columns = [
@@ -67,11 +68,6 @@ const columns = [
     {
       field: 'patronymic',
       headerName: 'patronymic',
-      width: 90
-    },
-    {
-      field: 'balance',
-      headerName: 'balance',
       width: 90
     }
   ];

@@ -1,0 +1,99 @@
+.modal{
+    width: 200vh;
+    height: 100vh;
+    margin: auto;
+    background-color:rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top:0;
+    left: 0;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+}
+
+.modal.active{
+    transform: scale(1);
+}
+
+.container{
+    font-family: 'Raleway';
+    font-style: normal;
+    padding:20px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:30px;
+}
+
+.caption{
+    color: #353030;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:100px;
+    margin-left: 100px;
+}
+
+.caption button{
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+}
+
+.inputs{
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputs1, .inputs2, .inputs3, .input{
+    display: flex;
+    flex-direction: row;
+    gap:75px;
+}
+
+.labelMaster span:first-child, .labelAddress span:first-child, .labelData span:first-child, .labelTime span:first-child, .labelTask span:first-child, .inputAction span:first-child, .inputCommentManager span:first-child, .inputCommentMaster span:first-child{
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.labelMaster, .labelAddress, .labelData, .labelTime, .labelTask, .inputAction, .inputCommentMaster, .inputCommentManager{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    justify-content: center;
+    margin-top: 15px;
+    width: 220px;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.btn{
+    width: 138px;
+    height: 44px;
+    border-radius: 10px;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    padding: 10px 32px 10px 32px;
+    align-items: center;
+}
+
+.btnSave{
+    background: #01AE4B;
+}
