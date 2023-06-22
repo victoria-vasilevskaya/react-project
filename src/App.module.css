@@ -1,4 +1,6 @@
 .app{
-    width: 1440px;
     background: #FBFBFB;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
 }
